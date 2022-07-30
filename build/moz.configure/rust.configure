@@ -367,11 +367,17 @@ def detect_rustc_target(
             candidates = narrowed
 
         # See if we can narrow down with the raw OS and raw CPU
+        raw_os = host_or_target.raw_os
+        raw_cpu = host_or_target.raw_cpu
+
+        if raw_os.startswith('linux-gnu'):
+            raw_os = 'linux-gnu'
+
         narrowed = [
             c
             for c in candidates
-            if c.target.raw_os == host_or_target.raw_os
-            and c.target.raw_cpu == host_or_target.raw_cpu
+            if c.target.raw_os == raw_os
+            and c.target.raw_cpu == raw_cpu
         ]
         if len(narrowed) == 1:
             return narrowed[0].rust_target
