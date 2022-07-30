@@ -4830,10 +4830,7 @@ echo "configure:4830: checking whether 64-bits std::atomic requires -latomic" >&
 if eval "test \"`echo '$''{'ac_cv_needs_atomic'+set}'`\" = set"; then
   echo $ac_n "(cached) $ac_c" 1>&6
 else
-                          if test "$CC_TYPE" = "clang" -a "$CPU_ARCH" = "x86" -a "$OS_ARCH" = "Linux"; then
-            ac_cv_needs_atomic=yes
-        else
-            cat > conftest.$ac_ext <<EOF
+        cat > conftest.$ac_ext <<EOF
 #line 4838 "configure"
 #include "confdefs.h"
 #include <cstdint>
@@ -4874,7 +4871,6 @@ rm -f conftest*
             
 fi
 rm -f conftest*
-        fi
     
 fi
 
