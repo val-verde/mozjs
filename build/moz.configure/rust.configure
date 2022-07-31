@@ -370,8 +370,13 @@ def detect_rustc_target(
         raw_os = host_or_target.raw_os
         raw_cpu = host_or_target.raw_cpu
 
-        if raw_os.startswith('linux-gnu'):
+        if raw_os.startswith('linux-androideabi'):
+            raw_os = 'linux-androideabi'
+        elif raw_os.startswith('linux-gnu'):
             raw_os = 'linux-gnu'
+
+        if raw_cpu == 'armv7a':
+            raw_cpu = 'armv7'
 
         narrowed = [
             c
